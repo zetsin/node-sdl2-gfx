@@ -21,7 +21,7 @@ var FPSmanager = exports.FPSmanager = c__SA_FPSmanager
 var FPSmanager_ptr = exports.FPSmanager_ptr = ref.refType(FPSmanager)
 var int32 = exports.int32 = ref.types.int32
 
-FFI.Library('libSDL2_gfx', {
+FFI.Library(process.platform == 'win32' ? 'SDL2_gfx' : 'libSDL2_gfx', {
 	SDL_initFramerate: [ voit, [ FPSmanager_ptr, ] ],
 	SDL_setFramerate: [ int32, [ FPSmanager_ptr, Uint32, ] ],
 	SDL_getFramerate: [ int32, [ FPSmanager_ptr, ] ],

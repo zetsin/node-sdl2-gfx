@@ -8,8 +8,7 @@ var ref = require('ref')
 
 var voit = exports.voit = ref.types.void
 var int32 = exports.int32 = ref.types.int32
-var SDL_Renderer = exports.SDL_Renderer = Struct({
-})
+var SDL_Renderer = exports.SDL_Renderer = voit
 var SDL_Renderer_ptr = exports.SDL_Renderer_ptr = ref.refType(SDL_Renderer)
 var short = exports.short = ref.types.short
 var Sint16 = exports.Sint16 = short
@@ -62,8 +61,7 @@ var SDL_Rect = exports.SDL_Rect = Struct({
 	w: int32,
 	h: int32,
 })
-var SDL_BlitMap = exports.SDL_BlitMap = Struct({
-})
+var SDL_BlitMap = exports.SDL_BlitMap = voit
 var SDL_BlitMap_ptr = exports.SDL_BlitMap_ptr = ref.refType(SDL_BlitMap)
 var SDL_Surface = exports.SDL_Surface = Struct({
 	flags: Uint32,
@@ -83,7 +81,7 @@ var SDL_Surface_ptr = exports.SDL_Surface_ptr = ref.refType(SDL_Surface)
 var char = exports.char = ref.types.char
 var string = exports.string = ref.types.CString
 
-FFI.Library('libSDL2_gfx', {
+FFI.Library(process.platform == 'win32' ? 'SDL2_gfx' : 'libSDL2_gfx', {
 	pixelColor: [ int32, [ SDL_Renderer_ptr, Sint16, Sint16, Uint32, ] ],
 	pixelRGBA: [ int32, [ SDL_Renderer_ptr, Sint16, Sint16, Uint8, Uint8, Uint8, Uint8, ] ],
 	hlineColor: [ int32, [ SDL_Renderer_ptr, Sint16, Sint16, Sint16, Uint32, ] ],

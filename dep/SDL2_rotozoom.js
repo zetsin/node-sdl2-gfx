@@ -56,8 +56,7 @@ var SDL_Rect = exports.SDL_Rect = Struct({
 	w: int32,
 	h: int32,
 })
-var SDL_BlitMap = exports.SDL_BlitMap = Struct({
-})
+var SDL_BlitMap = exports.SDL_BlitMap = voit
 var SDL_BlitMap_ptr = exports.SDL_BlitMap_ptr = ref.refType(SDL_BlitMap)
 var SDL_Surface = exports.SDL_Surface = Struct({
 	flags: Uint32,
@@ -77,7 +76,7 @@ var SDL_Surface_ptr = exports.SDL_Surface_ptr = ref.refType(SDL_Surface)
 var double = exports.double = ref.types.double
 var int32_ptr = exports.int32_ptr = ref.refType(int32)
 
-FFI.Library('libSDL2_gfx', {
+FFI.Library(process.platform == 'win32' ? 'SDL2_gfx' : 'libSDL2_gfx', {
 	rotozoomSurface: [ SDL_Surface_ptr, [ SDL_Surface_ptr, double, double, int32, ] ],
 	rotozoomSurfaceXY: [ SDL_Surface_ptr, [ SDL_Surface_ptr, double, double, double, int32, ] ],
 	rotozoomSurfaceSize: [ voit, [ int32, int32, double, double, int32_ptr, int32_ptr, ] ],
